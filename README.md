@@ -1,6 +1,5 @@
 <html>
 <head>
-<title>The AP Comp Science Website of Krish Vaswani</title>
 </head>
 <body style="background-color: powderblue;">
 <h1>Krish Vaswani</h1>
