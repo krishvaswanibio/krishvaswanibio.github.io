@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
 <title>The AP Comp Science Website of Krish Vaswani</title>
