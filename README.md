@@ -11,12 +11,11 @@ layout: null
 </body>
 
 <body>
-<p1><i>I am a human being who loves computer science.</i></p1>
+<p1><i>I am a human being who loves computer science, math, and engineering.</i></p1>
 <br>
 <p2>Play around with this website to learn more about me.</p2>
 <br>
-<p3>The code for this page is attached in a github page below. I personally prefer to write more dynamic websites, using flask, python, html, css, and javascript, but I had to make a more static website.</p3>
-<a href="https://github.com/krishvaswanibio/krishvaswanibio.github.io"><br>Github</a>
+<a href="https://github.com/krish-vaswani"><br>Click here to access my current github projects.</a>
 </body>
 
 <body>
