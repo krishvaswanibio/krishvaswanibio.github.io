@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<html>
+
+{% if site.title and site.title != page.title %}
+<h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
+{% endif %}
+
+
 <body style="background-color: powderblue;">
 <h1>Krish Vaswani</h1>
  <br>
