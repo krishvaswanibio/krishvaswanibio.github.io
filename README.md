@@ -1,6 +1,4 @@
-<html>
-<head>
-</head>
+<!DOCTYPE html>
 <body style="background-color: powderblue;">
 <h1>Krish Vaswani</h1>
  <br>
