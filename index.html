@@ -19,10 +19,11 @@ layout: null
 <br>
 <p1><i> This site will mainly serve as a search engine.</i></p1>
  <br>
+ <button id="searchBTN" type="button">Search</button>
  <py-script>
         from pyscript import when
 
-        @when('click', '#changeBtn')
+        @when('click', '#searchBTN')
         def update_textbox(event):
             # Target the textbox by its ID and change its value
             Element("myTextBox").element.value = "Hello from Python!"
