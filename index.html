@@ -11,11 +11,73 @@ layout: null
 </body>
 
 <body>
-<p1><i>I am currently a High School Student who loves computer science, math, and engineering. This site will mainly serve as a search engine.</i></p1>
-    <input type="text" id="searchBox" placeholder="Search...">
-    <button onclick="performSearch()">Search</button>
+<p1>I am currently a High School Student who loves computer science, math, and engineering.</p1>
+<br>
+<p1><i> This site will mainly serve as a search engine.</i></p1>
+ <br>
+    <div class="container">
+    <h2>Web Page Link Crawler</h2>
+    <p>Enter a target URL to extract all hyperlinks from its HTML.</p>
+    
+    <input type="text" id="urlInput" placeholder="https://example.com" value="https://example.com">
+    <button onclick="startCrawl()">Crawl Page</button>
+
+    <h3>Extracted Links:</h3>
     <ul id="results"></ul>
-    <script src="script.js"></script>
+</div>
+
+<script>
+async function startCrawl() {
+    const urlInput = document.getElementById('urlInput').value;
+    const resultsList = document.getElementById('results');
+    
+    if (!urlInput) {
+        alert('Please enter a valid URL');
+        return;
+    }
+
+    resultsList.innerHTML = '<li class="loading">Fetching and parsing HTML...</li>';
+
+    try {
+        // Using an open CORS proxy to allow the browser to bypass same-origin policies
+        const proxyUrl = 'https://herokuapp.com';
+        const targetUrl = proxyUrl + urlInput;
+
+        const response = await fetch(targetUrl);
+        if (!response.ok) throw new Error('Network response was not ok.');
+        
+        const htmlText = await response.text();
+
+        // Use DOMParser to turn the raw HTML string into a searchable document object
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, 'text/html');
+        
+        // Find all anchor tags (links)
+        const anchors = doc.querySelectorAll('a');
+        resultsList.innerHTML = ''; // Clear loading message
+
+        if (anchors.length === 0) {
+            resultsList.innerHTML = '<li>No links found on this page.</li>';
+            return;
+        }
+
+        // Loop through and display links
+        anchors.forEach(anchor => {
+            const href = anchor.getAttribute('href');
+            if (href) {
+                const li = document.createElement('li');
+                // Resolve relative URLs to absolute URLs
+                const absoluteUrl = new URL(href, urlInput).href;
+                li.innerHTML = `<a href="${absoluteUrl}" target="_blank">${absoluteUrl}</a>`;
+                resultsList.appendChild(li);
+            }
+        });
+
+    } catch (error) {
+        resultsList.innerHTML = `<li style="color: red;">Error: ${error.message}. <br><small>If using a proxy, ensure you have granted access or try a different target URL.</small></li>`;
+    }
+}
+</script>
 <br>
 <p2>Play around with this website to learn more about me.</p2>
 <br>
