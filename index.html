@@ -19,14 +19,13 @@ layout: null
     <p>I am currently a High School Student who loves computer science, math, and engineering.</p>
     <p><i>This site will mainly serve as a search engine and AI platform.</i></p>
     
-    <textarea id="searchBox" rows="4" cols="50" placeholder="Type your query here..."></textarea><br><br>
+    <textarea id="searchBox" rows="4" cols="50" placeholder="Type here..."></textarea><br><br>
     
     <button id="searchBTN" type="button">Search</button>
     <button id="aiBTN" type="button">AI</button><br><br>
     
     <input type="text" id="outputBox" readonly style="width: 300px;" /><br><br>
 
-    <!-- Python Logic for Search Button -->
     <py-script>
         from pyscript import when
         from js import document
@@ -36,7 +35,6 @@ layout: null
             document.getElementById("outputBox").value = "Success!"
     </py-script>
 
-    <!-- JavaScript Logic for Puter AI -->
     <script>
         const aiButton = document.getElementById('aiBTN');
         const searchBox = document.getElementById('searchBox');
@@ -46,14 +44,9 @@ layout: null
             if (!searchBox.value.trim()) return;
             
             outputBox.value = "Thinking...";
-            try {
-                // Fetch response from Puter AI
-                const response = await puter.ai.chat(searchBox.value);
-                outputBox.value = response;
-            } catch (error) {
-                console.error("AI Error:", error);
-                outputBox.value = "Error getting response.";
-            }
+
+            const response = await puter.ai.chat(searchBox.value);
+            outputBox.value = response;
         });
     </script>
 
