@@ -8,6 +8,104 @@ layout: null
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Krish Vaswani</title>
+    
+    <!-- PyScript setup -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.05.1/pyscript.css" />
+    <script defer src="https://pyscript.net/releases/2023.05.1/pyscript.js"></script>
+    
+    <!-- Puter JS setup -->
+    <script src="https://js.puter.com/v2/"></script>
+</head>
+
+<body style="background-color: powderblue;">
+    <h1>Krish Vaswani</h1>
+    <br>
+
+    <p>I am currently a High School Student who loves computer science, math, and engineering.</p>
+    <p><i>This site will mainly serve as a search engine and AI platform.</i></p>
+    <br>
+
+    <textarea id="searchBox" rows="4" cols="50" placeholder="Enter query or prompt..."></textarea>
+    <br>
+    
+    <button id="searchBTN" type="button">Search</button>
+    <button id="aiBTN" type="button">AI</button>
+    <br><br>
+
+    <input type="text" id="outputBox" readonly style="width: 400px;" /> 
+    <br><br>
+
+    <!-- PyScript logic for Search Engine -->
+    <py-script>
+      from pyscript import when
+      from js import fetch, document
+
+      @when('click', '#searchBTN')
+      async def run_search(event):
+          output = document.getElementById("outputBox")
+          query = document.getElementById("searchBox").value.strip()
+
+          output.value = "searching /n hi"
+
+          url = f"https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch={query}&utf8=&format=json&origin=*"
+          response = await fetch(url)
+          data = await response.json()
+          
+          results = data.query.search
+          if !results:
+              output.value = "No results found."
+          else:
+              first_result = results[0]['title']
+              output.value = f"Top Result: {first_result}"
+    </py-script>
+
+    <!-- JavaScript logic for Puter AI -->
+    <script>
+        const aiButton = document.getElementById('aiBTN');
+        const searchBox = document.getElementById('searchBox');
+        const outputBox = document.getElementById('outputBox');
+
+        aiButton.addEventListener('click', async () => {
+            const query = searchBox.value.strip ? searchBox.value.trim() : searchBox.value;
+
+            outputBox.value = "Thinking...";
+
+            const response = await puter.ai.chat(query);
+            outputBox.value = response;
+            console.error("AI Error:", error);
+            outputBox.value = "Error generating AI response.";
+        });
+    </script>
+
+    <p>Play around with this website to learn more about me.</p>
+    <br>
+    <a href="https://github.com/krish-vaswani">Click here to access my current github projects.</a>
+    <br><br>
+
+    <img src="WHS 1.jpg" alt="A picture of my high school">
+    <img src="WHS 2.jpg" alt="Another picture of my high school">
+    <br><br>
+
+    <button id="alertButton" type="button">Click Here if you love the website!</button>
+
+    <script>
+        const alertButton = document.getElementById('alertButton');
+        // I love writing readable code :)
+        alertButton.addEventListener('click', () => {
+            alert('I love it.');
+        });
+    </script>
+</body>
+</html>---
+layout: null
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krish Vaswani</title>
     <link rel="stylesheet" href="https://pyscript.net/releases/2023.05.1/pyscript.css" />
     <script defer src="https://pyscript.net/releases/2023.05.1/pyscript.js"></script>
     <script src="https://js.puter.com/v2/"></script>
