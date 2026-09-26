@@ -25,7 +25,7 @@ layout: null
   <py-script>
   from pyscript import when
     
-  @when('click', '#searchBTN')
+  @when('click', 'searchBTN')
   def update_textbox(event):
     # Target the textbox by its ID and change its value
     Element("myTextBox").element.value = "Hello from Python!"
