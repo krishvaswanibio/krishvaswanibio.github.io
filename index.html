@@ -23,14 +23,27 @@ layout: null
  <textarea id="searchBox"></textarea>  
  <br>
  <button id="searchBTN" type="button">Search</button>
-  <py-script>
+ <button id="aiBTN" type="button">AI</button>
+ <br>
+ <output id="outputBox"></output>
+ <py-script>
   from pyscript import when
     
   @when('click', 'searchBTN')
   def update_textbox(event):
-    # Target the textbox by its ID and change its value
-    Element("searchBox").element.value = "Hello from Python!"
-  </py-script>
+   Element("searchBox").element.value = "Hello from Python!"
+ </py-script>
+ <script>
+        const AI_button = document.getElementById('AIBTN');
+        //I love writing readable code :)
+        button.addEventListener('click', () => {
+            document.getElementById("outputBox").value = "Result";
+        });
+        puter.ai.chat(Element(), { model: "google/gemini-3.8-flash" })
+            .then(response => {
+                console.log(response);
+            });
+    </script>
     
 <br>
 <p2>Play around with this website to learn more about me.</p2>
