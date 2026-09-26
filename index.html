@@ -70,10 +70,10 @@ layout: null
 
             outputBox.value = "Thinking...";
 
-            const response = await puter.ai.chat(query);
-            outputBox.value = response;
-            console.error("AI Error:", error);
-            outputBox.value = "Error generating AI response.";
+
+            const response = await fetch(`https://text.pollinations.ai/${encodeURIComponent(prompt)}`);
+            const resultText = await response.text();
+            outputBox.value = resultText;
         });
     </script>
 
