@@ -4,64 +4,73 @@ layout: null
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krish Vaswani</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.05.1/pyscript.css" />
+    <script defer src="https://pyscript.net/releases/2023.05.1/pyscript.js"></script>
+    <script src="https://js.puter.com/v2/"></script>
+</head>
 
-<link rel="stylesheet" href="https://pyscript.net/releases/2023.05.1/pyscript.css" />
-<script defer src="https://pyscript.net/releases/2023.05.1/pyscript.js" config="pyscript.json"></script>
- <script src="https://js.puter.com/v2/"></script>
-
- 
 <body style="background-color: powderblue;">
-<h1>Krish Vaswani</h1>
- <br>
-</body>
-
-<body>
-<p1>I am currently a High School Student who loves computer science, math, and engineering.</p1>
-<br>
-<p1><i> This site will mainly serve as a search engine and AI platform.</i></p1>
- <br>
- <textarea id="searchBox"></textarea>
- <br>
- <button id="searchBTN" type="button">Search</button>
- <button id="aiBTN" type="button">AI</button>
- <br>
- <input type="text" id="outputBox" READONLY/> 
- <py-script>
-  from pyscript import when
+    <h1>Krish Vaswani</h1>
     
-  @when('click', 'searchBTN')
-  def update_textbox(event):
-   Element("outputBox").element.value = "Success!"
- </py-script>
- <script>
-        const AI_button = document.getElementById('AIBTN');
-        const searchBox = document.getElementById('searchBox');
-        button.addEventListener('click', () => {
-            let result = puter.ai.chat(searchBox.value).then(console.log);
-            document.getElementById("outputBox").value = result;
-        });
-        puter.ai.chat(Element(), { model: "google/gemini-3.8-flash" })
-            .then(response => {
-                console.log(response);
-            });
-    </script>
+    <p>I am currently a High School Student who loves computer science, math, and engineering.</p>
+    <p><i>This site will mainly serve as a search engine and AI platform.</i></p>
     
-<br>
-<p2>Play around with this website to learn more about me.</p2>
-<br>
-<a href="https://github.com/krish-vaswani"><br>Click here to access my current github projects.</a>
-</body>
+    <textarea id="searchBox" rows="4" cols="50" placeholder="Type your query here..."></textarea><br><br>
+    
+    <button id="searchBTN" type="button">Search</button>
+    <button id="aiBTN" type="button">AI</button><br><br>
+    
+    <input type="text" id="outputBox" readonly style="width: 300px;" /><br><br>
 
-<body>
-<br>
-<button id="alertButton" type="button">Click Here if you love the website!</button>
+    <!-- Python Logic for Search Button -->
+    <py-script>
+        from pyscript import when
+        from js import document
+
+        @when('click', '#searchBTN')
+        def update_textbox(event):
+            document.getElementById("outputBox").value = "Success!"
+    </py-script>
+
+    <!-- JavaScript Logic for Puter AI -->
     <script>
-    const button = document.getElementById('alertButton');
-        //I love writing readable code :)
-        button.addEventListener('click', () => {
+        const aiButton = document.getElementById('aiBTN');
+        const searchBox = document.getElementById('searchBox');
+        const outputBox = document.getElementById('outputBox');
+
+        aiButton.addEventListener('click', async () => {
+            if (!searchBox.value.trim()) return;
+            
+            outputBox.value = "Thinking...";
+            try {
+                // Fetch response from Puter AI
+                const response = await puter.ai.chat(searchBox.value);
+                outputBox.value = response;
+            } catch (error) {
+                console.error("AI Error:", error);
+                outputBox.value = "Error getting response.";
+            }
+        });
+    </script>
+
+    <p>Play around with this website to learn more about me.</p>
+    <a href="https://github.com/krish-vaswani" target="_blank">Click here to access my current GitHub projects.</a>
+    <br><br>
+
+    <img src="pic_trulli.jpg" alt="Italian Trulli">
+    <img src="pic_trulli.jpg" alt="Italian Trulli"><br><br>
+
+    <button id="alertButton" type="button">Click Here if you love the website!</button>
+
+    <script>
+        const alertButton = document.getElementById('alertButton');
+        alertButton.addEventListener('click', () => {
             alert('I love it.');
         });
-     </script>
+    </script>
 </body>
-
 </html>
