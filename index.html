@@ -18,26 +18,27 @@ layout: null
 <body>
 <p1>I am currently a High School Student who loves computer science, math, and engineering.</p1>
 <br>
-<p1><i> This site will mainly serve as a search engine.</i></p1>
+<p1><i> This site will mainly serve as a search engine and AI platform.</i></p1>
  <br>
- <textarea id="searchBox"></textarea>  
+ <textarea id="searchBox"></textarea>
  <br>
  <button id="searchBTN" type="button">Search</button>
  <button id="aiBTN" type="button">AI</button>
  <br>
- <output id="outputBox"></output>
+ <input type="text" id="outputBox" READONLY/> 
  <py-script>
   from pyscript import when
     
   @when('click', 'searchBTN')
   def update_textbox(event):
-   Element("aiBTN").element.value = "Hello from Python!"
+   Element("outputBox").element.value = "Success!"
  </py-script>
  <script>
         const AI_button = document.getElementById('AIBTN');
-        //I love writing readable code :)
+        const searchBox = document.getElementById('searchBox');
         button.addEventListener('click', () => {
-            document.getElementById("outputBox").value = "Result";
+            let result = puter.ai.chat(searchBox.value).then(console.log);
+            document.getElementById("outputBox").value = result;
         });
         puter.ai.chat(Element(), { model: "google/gemini-3.8-flash" })
             .then(response => {
